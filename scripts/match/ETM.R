@@ -95,7 +95,7 @@ for (i in 1:list_count) {
   #extract only basename
   bname <- file_path_sans_ext(basename(r_list[[i]]))
   #define band names
-  names(r) <- c("Aerosol", "Blue", "Green", "Red", "NIR", "SWIR1", "SWIR2")
+  names(r) <- c("Blue", "Green", "Red", "NIR", "SWIR1", "SWIR2")
   #read shapefile
   r_poly <- shapefile(p_list[[i]])
   #read date
