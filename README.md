@@ -27,4 +27,6 @@ and randomize points outside your polygon and inside your raster
 
 # Final data
 
-Example in `/data` folder
+Example in `/data` folder:
+`BA.txt` Burned Area extracted pixel values + spectral indexes
+`NBA.txt` Non Burned Area extracted pixel values + spectral indexes
