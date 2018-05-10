@@ -2,7 +2,9 @@ Match raster and Polygons - Extract values and calc spectral indexes
 
 # Scripts
 * Pre processing:
+
 `crop_raster.R` Crop extent of raster list to gain processing time
+
 `reproject_raster.R` Check projections and reproject raster list to reference CRS
 
 * Match:
