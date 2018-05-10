@@ -1,13 +1,13 @@
 Match raster and Polygons - Extract values and calc spectral indexes
 
 # Scripts
-* Pre processing:
+### Pre processing:
 
 `crop_raster` Crop extent of raster list to gain processing time
 
 `reproject_raster` Check projections and reproject raster list to reference CRS
 
-* Match:
+### Match:
 
 Extract all pixel values into a raster matched with polygon by date
 and leatorize points outside your polygon and inside your raster
@@ -18,7 +18,7 @@ and leatorize points outside your polygon and inside your raster
 
 `OLI` Operation Land Imager (Landsat 8)
 
-* Post processing:
+### Post processing:
 
 Calculates NDVI, EVI, SAVI, NDMI, NBR and NBR for extracted data
 Organize data.frames for machine learning process
