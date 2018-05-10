@@ -27,3 +27,7 @@ Organize data.frames for machine learning process
 calc_indexes.R
 organize_array.R
 ```
+
+# Final data
+
+Example in `data` folder
