@@ -78,8 +78,43 @@ for (i in 1:list_count) {
   TM_data_entries <- rbind (TM_data_entries, temp)
 }
 
+## Extract same length data for non-burned areas
+## Import reference Polygon
+ref_shp <- shapefile ("H:/machine_learning/vectors/reference.shp")
+
+## Calc number of random points per scene
+scene_points <- nrow(TM_data_entries) /nlevels(TM_data_entries$bname)
+
+## Create empty data.frame for non-burned data
+TM_non_burned <- data.frame (NULL)
+
+## Extract values from random points in non-burned areas for each scene
+for (i in 1:list_count) {
+  #read stack
+  r <- stack(r_list[[i]])
+  #extract only basename
+  bname <- file_path_sans_ext(basename(r_list[[i]]))
+  #define band names
+  names(r) <- c("Blue", "Green", "Red", "NIR", "SWIR1", "SWIR2")
+  #read shapefile
+  r_poly <- shapefile(p_list[[i]])
+  #read date
+  date <- date_list[[i]]
+  ##read sensor
+  sensor <- sensor_list[[i]]
+  ##erase burned area
+  hole <- gDifference(ref_shp, r_poly)
+  ##create random points in non-burned area
+  p_nba <- spsample (hole, n=scene_points, type="random")
+  ## extract values
+  temp <- extract(r, p_nba, cellnumbers=TRUE, df=TRUE)
+  temp <- data.frame (bname, date, sensor, temp)
+  ## build data.frame
+  TM_non_burned <- rbind (TM_non_burned, temp)
+}
+
 ## Remove /$~temp objects
 rm (df_poly, df_raster, poly_dates, poly_list_count, poly_list_names, 
     poly_loc, raster_dates, raster_list_count, raster_list_names, 
     raster_loc, r_list, p_list, list_count, r, bname, r_poly, temp, matchs,
-    i, date_list, sensor_list, date, sensor)
+    i, date_list, sensor_list, date, sensor, hole, p_nba, ref_shp, scene_points)
