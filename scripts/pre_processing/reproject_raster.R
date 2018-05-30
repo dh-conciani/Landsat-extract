@@ -1,4 +1,4 @@
-## Crop a list of rasters
+## Reproject a list of rasters
 ## Dhemerson Conciani (dh.conciani@gmail.com)
 
 # Read packages
