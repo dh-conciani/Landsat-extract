@@ -21,7 +21,7 @@ list_names <- file_path_sans_ext(basename(raster_list))
 for (i in 1:list_count) {
   #read in raster
   r <- stack(raster_list[[i]])
-  #perform crop
+  #perform reproject
   croped_raster <- projectRaster (r, crs = ref_proj)
   #write each reprojected raster to a new file 
   writeRaster(croped_raster, paste0 ('H:/machine_learning/img_reprojected/',list_names[i],'.tif'), overwrite=TRUE)
